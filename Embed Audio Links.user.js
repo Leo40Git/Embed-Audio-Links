@@ -3,9 +3,12 @@
 // @namespace    https://github.com/Leo40Git/Embed-Audio-Links
 // @version      1.0
 // @description  Embeds audio download links so they can be played in-browser
+// @license      MIT
 // @author       ADudeCalledLeo (Leo40Git)
 // @match        *://*/*
 // @grant        none
+// @updateURL    https://github.com/Leo40Git/Embed-Audio-Links/raw/master/Embed%20Audio%20Links.user.js
+// @downloadURL  https://github.com/Leo40Git/Embed-Audio-Links/raw/master/Embed%20Audio%20Links.user.js
 // ==/UserScript==
 
 (function() {
