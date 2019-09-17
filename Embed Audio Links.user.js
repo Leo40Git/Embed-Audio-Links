@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Embed Audio Links
 // @namespace    https://github.com/Leo40Git/Embed-Audio-Links
-// @version      1.0
+// @version      1.1
 // @description  Embeds audio download links so they can be played in-browser
 // @license      MIT
 // @author       ADudeCalledLeo (Leo40Git)
@@ -14,14 +14,22 @@
 (function() {
     'use strict';
 
+    const audio = document.createElement('audio');
+
     function createEmbeds(audext, audtype) {
-        console.log(`scanning for ${audext} links...`);
+        var audsup = audio.canPlayType(audtype);
+
+        if (audsup === '') {
+            console.warn(`was going to scan for ${audext} (${audtype}) links, but ${audtype} is not supported here (audio.canPlayType('${audtype}') returned '')`);
+            return;
+        }
+
+        console.log(`scanning for ${audext} (${audtype}) links... (audio.canPlayType('${audtype}') returned '${audsup}')`);
 
         document.querySelectorAll('a[href$="' + audext + '"]').forEach(function(elem) {
             if (elem == null) {
                 return;
             }
-            console.log(`got ${audext} link: "${elem.href}"`);
 
             var btn = document.createElement('button');
             var btntxt = document.createTextNode('▶️');
@@ -67,8 +75,10 @@
         elem.parentElement.removeChild(elem);
     });
 
-    createEmbeds('.wav', 'audio/wav');
+    createEmbeds('.wav', 'audio/wave');
     createEmbeds('.ogg', 'audio/ogg');
     createEmbeds('.mp3', 'audio/mpeg');
+    createEmbeds('.mp4', 'audio/mp4');
+    createEmbeds('.flac', 'audio/flac');
 
 })();
