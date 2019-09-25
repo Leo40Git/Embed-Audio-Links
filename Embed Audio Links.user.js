@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Embed Audio Links
 // @namespace    https://github.com/Leo40Git/Embed-Audio-Links
-// @version      1.1
+// @version      1.1.1
 // @description  Embeds audio download links so they can be played in-browser
 // @license      MIT
 // @author       ADudeCalledLeo (Leo40Git)
@@ -16,15 +16,23 @@
 
     const audio = document.createElement('audio');
 
+    function print(msg) {
+        console.log(`%c[Embed Audio Links] %c${msg}`, 'color: SteelBlue; font-weight: bold', '');
+    }
+
+    function warn(msg) {
+        console.warn(`%c[Embed Audio Links] %c${msg}`, 'color: SteelBlue; font-weight: bold', '');
+    }
+
     function createEmbeds(audext, audtype) {
         var audsup = audio.canPlayType(audtype);
 
         if (audsup === '') {
-            console.warn(`was going to scan for ${audext} (${audtype}) links, but ${audtype} is not supported here (audio.canPlayType('${audtype}') returned '')`);
+            warn(`%cwas going to scan for ${audext} (${audtype}) links, but ${audtype} is not supported here (audio.canPlayType('${audtype}') returned '')`);
             return;
         }
 
-        console.log(`scanning for ${audext} (${audtype}) links... (audio.canPlayType('${audtype}') returned '${audsup}')`);
+        print(`scanning for ${audext} (${audtype}) links... (audio.canPlayType('${audtype}') returned '${audsup}')`);
 
         document.querySelectorAll('a[href$="' + audext + '"]').forEach(function(elem) {
             if (elem == null) {
