@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Embed Audio Links
 // @namespace    https://github.com/Leo40Git/Embed-Audio-Links
-// @version      1.2.0
+// @version      1.2.1
 // @description  Embeds audio download links so they can be played in-browser
 // @license      MIT
 // @author       ADudeCalledLeo (Leo40Git)
