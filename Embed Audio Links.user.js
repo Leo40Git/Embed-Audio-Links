@@ -21,7 +21,7 @@
     }
 
     function warn(msg) {
-        console.warn(`%c[Embed Audio Links] %c${msg}`, 'color: SteelBlue; font-weight: bold', '');
+        console.warn(`%c[Embed Audio Links] %c${msg}`, 'color: DarkOrange; font-weight: bold', '');
     }
 
     function createEmbeds(audext, audtype) {
